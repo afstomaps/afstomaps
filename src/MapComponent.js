@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
@@ -48,9 +48,11 @@ const neighborhoods = {
   "Workington": [-17.8644, 31.0054]
 };
 
-const MapComponent = () => {
+const MapComponent = ({ selectedNeighborhood }) => {
+  const position = neighborhoods[selectedNeighborhood] || [-17.824858, 31.053028];
+
   return (
-    <MapContainer center={[-17.824858, 31.053028]} zoom={12} style={{ height: "100vh", width: "100%" }}>
+    <MapContainer center={position} zoom={12} style={{ height: "100vh", width: "100%" }}>
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

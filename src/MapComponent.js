@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import React, { useEffect, useRef } from 'react';
+import { MapContainer, TileLayer, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
 const neighborhoods = {
@@ -49,21 +49,28 @@ const neighborhoods = {
 };
 
 const MapComponent = ({ selectedNeighborhood }) => {
+  const map = useMap();
   const position = neighborhoods[selectedNeighborhood] || [-17.824858, 31.053028];
 
+  useEffect(() => {
+    if (selectedNeighborhood) {
+      map.setView(position, 15); // Zoom level 15 for a closer view
+    }
+  }, [selectedNeighborhood, map, position]);
+
+  return null;
+};
+
+const MapWrapper = ({ selectedNeighborhood }) => {
   return (
-    <MapContainer center={position} zoom={12} style={{ height: "100vh", width: "100%" }}>
+    <MapContainer center={[-17.824858, 31.053028]} zoom={12} style={{ height: "100vh", width: "100%" }}>
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       />
-      {Object.entries(neighborhoods).map(([name, position]) => (
-        <Marker key={name} position={position}>
-          <Popup>{name}</Popup>
-        </Marker>
-      ))}
+      <MapComponent selectedNeighborhood={selectedNeighborhood} />
     </MapContainer>
   );
 };
 
-export default MapComponent;
+export default MapWrapper;

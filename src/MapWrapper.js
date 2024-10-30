@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import MapWrapper from './MapWrapper';
-import Navbar from './Navbar';
-import './App.css';
+import React, { useEffect } from 'react';
+import { MapContainer, TileLayer, useMap } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
 
 const neighborhoods = {
   "Alexandra Park": [-17.7972, 31.0409],
@@ -49,15 +48,29 @@ const neighborhoods = {
   "Workington": [-17.8644, 31.0054]
 };
 
-function App() {
-  const [selectedNeighborhood, setSelectedNeighborhood] = useState("");
+const MapComponent = ({ selectedNeighborhood }) => {
+  const map = useMap();
+  const position = neighborhoods[selectedNeighborhood] || [-17.824858, 31.053028];
 
+  useEffect(() => {
+    if (selectedNeighborhood) {
+      map.setView(position, 15); // Zoom level 15 for a closer view
+    }
+  }, [selectedNeighborhood, map, position]);
+
+  return null;
+};
+
+const MapWrapper = ({ selectedNeighborhood }) => {
   return (
-    <div className="App">
-      <Navbar neighborhoods={neighborhoods} onSelect={setSelectedNeighborhood} />
-      <MapWrapper selectedNeighborhood={selectedNeighborhood} />
-    </div>
+    <MapContainer center={[-17.824858, 31.053028]} zoom={12} style={{ height: "100vh", width: "100%" }}>
+      <TileLayer
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      />
+      <MapComponent selectedNeighborhood={selectedNeighborhood} />
+    </MapContainer>
   );
-}
+};
 
-export default App;
+export default MapWrapper;

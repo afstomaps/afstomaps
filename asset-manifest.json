@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/harare/static/css/main.1ccf5dc7.css",
-    "main.js": "/harare/static/js/main.a5bf6d45.js",
-    "static/js/453.791bb9f1.chunk.js": "/harare/static/js/453.791bb9f1.chunk.js",
-    "index.html": "/harare/index.html",
-    "main.1ccf5dc7.css.map": "/harare/static/css/main.1ccf5dc7.css.map",
-    "main.a5bf6d45.js.map": "/harare/static/js/main.a5bf6d45.js.map",
-    "453.791bb9f1.chunk.js.map": "/harare/static/js/453.791bb9f1.chunk.js.map"
+    "main.css": "/afstomaps/static/css/main.1ccf5dc7.css",
+    "main.js": "/afstomaps/static/js/main.8b06eb52.js",
+    "static/js/453.791bb9f1.chunk.js": "/afstomaps/static/js/453.791bb9f1.chunk.js",
+    "index.html": "/afstomaps/index.html",
+    "main.1ccf5dc7.css.map": "/afstomaps/static/css/main.1ccf5dc7.css.map",
+    "main.8b06eb52.js.map": "/afstomaps/static/js/main.8b06eb52.js.map",
+    "453.791bb9f1.chunk.js.map": "/afstomaps/static/js/453.791bb9f1.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1ccf5dc7.css",
-    "static/js/main.a5bf6d45.js"
+    "static/js/main.8b06eb52.js"
   ]
 }
